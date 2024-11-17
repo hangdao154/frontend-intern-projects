@@ -33,14 +33,12 @@ export default function Table(props: Props) {
             handleKeyToSort(newSortInfo);
             return newSortInfo;
         });
-
-
     }
 
     function camelCaseToWords(s: string) {
         const result = s.replace(/([A-Z])/g, ' $1');
         return result.charAt(0).toUpperCase() + result.slice(1);
-      }
+    }
 
     const handlePrintCell = (key: string, val: any) => {
         switch (key) {
