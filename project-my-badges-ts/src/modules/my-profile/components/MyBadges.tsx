@@ -12,7 +12,7 @@ import { State } from '../../../store/my-profile/useMyProfileStore';
 
 
 export default function MyBadges() {
-    const userID = 1;
+    const userID = 2;
 
     const [popupState, setPopupState] = useState<boolean>(false);
     const [displayedPopupBadge, setDisplayedPopupBade] = useState<any>(undefined);
@@ -134,7 +134,7 @@ export default function MyBadges() {
                     console.log(e.target.value);
                     handleSetFilterRank(e.target.value);
                 }}>
-                    <option>Tier</option>
+                    <option>Tier (All)</option>
                     <option>Others</option>
                     <option>Bronze (Tier 1)</option>
                 </select>
@@ -142,7 +142,8 @@ export default function MyBadges() {
                     console.log(e.target.value);
                     handleSetFilterStatus(e.target.value);
                 }}>
-                    <option>Status</option>
+                    <option>Status (All)</option>
+                    <option>Claimed</option>
                     <option>Not Claim</option>
                     <option>Unavailable</option>
                 </select>

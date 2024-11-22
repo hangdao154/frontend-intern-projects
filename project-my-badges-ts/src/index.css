@@ -413,10 +413,13 @@ input {
 
 .badges-container > * {
   position: relative;
+  height: 100%;
 }
 
 .badge-item {
+  box-sizing: border-box;
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -446,6 +449,7 @@ input {
 }
 
 .badge-item .badge-img, .badge-details .badge-img {
+  width: 50%;
   max-width: 160px;
 }
 
