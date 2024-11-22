@@ -5,11 +5,10 @@ interface Props {
     popupState: boolean,
     data: BadgeListItem,
     handleChangePopupState: (state: boolean) => void,
-    handleBadgeImg: (name: string) => string
 }
 
 export default function BadgeDetails(props: Props) {
-    const { popupState, data, handleChangePopupState, handleBadgeImg } = props;
+    const { popupState, data, handleChangePopupState} = props;
 
     // data = { id -> img, createdAt, updatedAt, isDeleted, name, rank, status }
     // status: claimed, not-claim, unavailable
@@ -23,7 +22,7 @@ export default function BadgeDetails(props: Props) {
             <div className="container badge-details popup">
                 <img src="src/assets/x-button.png" className="escape-btn sm-icon" onClick={() => handleChangePopupState(false)} />
 
-                <img className="badge-img"src={handleBadgeImg(data.name)} />
+                <img className="badge-img"src={data.badgeImg} />
 
                 <h1>{data.name}</h1>
                 <div className="type-tier-container">

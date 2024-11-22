@@ -288,7 +288,7 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
 .badge-collection .collection-item {
@@ -298,8 +298,8 @@ hr {
 .collection-item .badge-action {
   width: 24px;
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -3px;
+  right: -3px;
 }
 
 .badge-collection img {
@@ -411,8 +411,11 @@ input {
   gap: 24px 16px;
 }
 
-.badge-item {
+.badges-container > * {
   position: relative;
+}
+
+.badge-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -424,10 +427,15 @@ input {
 }
 
 .badge-flag {
+  z-index: 1;
   height: 37px;
   position: absolute;
-  right: 10px;
-  top: -7px;
+  right: 15px;
+  top: -10px;
+}
+
+.badge-flag.available:hover, .badge-action:hover {
+  filter: brightness(70%);
 }
 
 .badge-item p {
@@ -438,8 +446,7 @@ input {
 }
 
 .badge-item .badge-img, .badge-details .badge-img {
-  max-width: 35%;
-  max-height: 45%;
+  max-width: 160px;
 }
 
 .status-btn {
@@ -473,8 +480,8 @@ input {
   box-shadow: inset 2px 4px 4px #FFFFFF25;
 }
 
-.badge-img.gray-scale {
-  filter: grayscale(100%) brightness(300%) contrast(50%);
+.gray-scale {
+  filter: grayscale(100%) brightness(150%) contrast(50%);
 }
 
 
@@ -525,6 +532,7 @@ footer .right>* {
   margin: 0;
   z-index: 2;
   width: 40%;
+  max-width: 700px;
   position: fixed;
   top: 50%;
   left: 50%;

@@ -1,14 +1,19 @@
 import { ReactElement } from "react";
 
 interface BadgeListItem {
-    name: string,
+    id?: number,
+    name?: string,
+    createdAt?: string,
+    isDeleted?: string,
+    updatedAt?: string,
+    rank?: string,   //tier
+    status?: string,
     description: string,
     type: string,
-    rank: string,   //tier
     howToEarn: string,
-    badgeImg: ReactElement,
-    button: ReactElement,   //flag
-    status: string
+    badgeImg: string,
+    button: string,   //flag
+    pinnedStatus: boolean,
 }
 
 interface Friend {

@@ -1,5 +1,5 @@
 interface Props {
-    status: string
+    status?: string
 }
 
 export default function BadgeStatus(props: Props) {

@@ -4,7 +4,11 @@ import PageNav from '../../../components/pagination/PageNav';
 import BadgeDetails from './BadgeDetails';
 import { BadgeListItem } from '../../../interfaces';
 import useBadges from '../hooks/custom-hooks';
-import { IBadgeFilter } from '../constants';
+import { IBadgeFilter } from '../constants/interfaces';
+import { getPinnedBadges, getActions } from '../../../store/my-profile/selector';
+import { mapBadgeImg } from '../../../lib/helper';
+import { State } from '../../../store/my-profile/useMyProfileStore';
+
 
 
 export default function MyBadges() {
@@ -16,16 +20,46 @@ export default function MyBadges() {
 
     const { getBadges, fetchedData, fetchedMeta } = useBadges(userID);
 
+    const { setPinnedBadges } = getActions();
+
+    const pinnedBadges: Array<BadgeListItem | null> = getPinnedBadges();
+
+    // Get filtered badges
     useEffect(() => {
         getBadges(filter);
     }, [filter])
+    const filteredData: BadgeListItem[] = fetchedData.map((item) => ({
+        id: item.id,
+        createdAt: item.createdAt,
+        isDeleted: item.isDeleted,
+        updatedAt: item.updatedAt,
+        name: item.name,
+        status: item.status,
+        rank: item.rank,
+        description: "",
+        type: "",
+        howToEarn: "",
+        badgeImg: mapBadgeImg(item.name),
+        button: "",
+        pinnedStatus: false,
+    }))
 
     const [currentPage, setCurrentPage] = useState<number>(fetchedMeta.currentPage);
-    console.log(fetchedMeta);
 
     const ITEMS_PER_PAGE = fetchedMeta.itemsPerPage;
     const totalPages = fetchedMeta.totalPages;
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
+    const handlePinBadge = (pinnedBadges: State['pinnedBadges'], badgeToPin: BadgeListItem) => {
+        if (badgeToPin.id) {
+            if (!pinnedBadges.some(badge => badge !== null && badge.id === badgeToPin.id)) {
+                const newPinnedBadges: State['pinnedBadges'] = [...pinnedBadges];
+                newPinnedBadges[newPinnedBadges.indexOf(null)] = badgeToPin;
+                return newPinnedBadges;
+            }
+        }
+        return pinnedBadges;
+    }
 
     const handleSetFilterRank = (rank: string | undefined): void => {
         if (rank === "Tier") {
@@ -71,16 +105,6 @@ export default function MyBadges() {
         setPopupState(state);
     }
 
-    const handleBadgeImg = (name: string): string => {
-        switch (name) {
-            case ("X beginner"): return "src/assets/badge/user-badge/badge_1.png";
-            case ("Discord beginner"): return "src/assets/badge/user-badge/badge_2.png";
-            case ("Rookie"): return "src/assets/badge/user-badge/badge_3.png";
-            case ("Pathfinder"): return "src/assets/badge/user-badge/badge_4.png";
-            default: return "src/assets/badge/badge1.png";
-        }
-    }
-
     // Pagination
     const handleChangePage = (page: number) => {
         setCurrentPage(page);
@@ -100,8 +124,11 @@ export default function MyBadges() {
 
     let index = startIndex;
 
+
+
     return (
         <>
+
             <div className="filter-section">
                 <select className="selector" onChange={(e) => {
                     console.log(e.target.value);
@@ -123,13 +150,21 @@ export default function MyBadges() {
             </div>
 
             <div className="badges-container">
-                {fetchedData.map(item => (
-                    <BadgeItem key={index++} data={item} handleBadgeClick={handleBadgeClick} handleBadgeImg={handleBadgeImg}>
-                    </BadgeItem>
+                {filteredData.map(item => (
+                    <div key={index++}>
+                        <img className={"badge-flag" + (item.status === "unavailable" ? " gray-scale" : " available")}
+                            src={item.id !== undefined && pinnedBadges && pinnedBadges.some(badge => badge !== null && badge.id === item.id) ?
+                                "src/assets/badge-actions/saved-icon.png" :
+                                "src/assets/badge-actions/add-icon.png"}
+                            onClick={item.status === "unavailable" ? undefined : () => setPinnedBadges(handlePinBadge(pinnedBadges, item))}
+                        />
+                        <BadgeItem data={item} handleBadgeClick={handleBadgeClick}>
+                        </BadgeItem>
+                    </div>
                 ))}
             </div>
 
-            <BadgeDetails popupState={popupState} data={displayedPopupBadge} handleChangePopupState={handleChangePopupState} handleBadgeImg={handleBadgeImg}></BadgeDetails>
+            <BadgeDetails popupState={popupState} data={displayedPopupBadge} handleChangePopupState={handleChangePopupState}></BadgeDetails>
 
             <div className={popupState === true ? "overlay-shown" : "overlay-hidden"}></div>
 

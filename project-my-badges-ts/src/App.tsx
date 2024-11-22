@@ -1,19 +1,42 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Points from './components/Points'
 import ProfileDetails from './modules/my-profile/components/ProfileDetails'
 import TaskSection from './modules/my-profile/components/TaskSection'
 
+const tabs = [
+  {
+    key: 0,
+    label: "My Badges"
+  },
+  {
+    key: 1,
+    label: "Friend List"
+  },
+  {
+    key: 2,
+    label: "Point History"
+  }
+]
+
 function App() {
+
+
+  // Set all badges
+  // useEffect(() => {
+  //     actions.setBadges();
+  // }, [])
+  // const allBadges = getAllBadges();
+  // console.log("All badges store:");
+  // console.log(allBadges);
+
+
   // For track top sliding page
   const [profilePage, setProfilePage] = useState<number>(0);
 
   // For tracking task page
   const [taskPage, setTaskPage] = useState<number>(0);
-
-  // Tracking the status of currently active buttons
-  const [activeTaskBtn, setActiveTaskBtn] = useState<number>(0);
 
   return (
     <>
@@ -58,20 +81,14 @@ function App() {
 
         <section className="container tasks">
           <ul className="task-buttons">
-            <li className={activeTaskBtn === 0 ? "active-button" : ""} onClick={() => {
-              setActiveTaskBtn(0);
-              setTaskPage(0);
-            }}>My Badges<img className="sm-icon inline-icon" src="src/assets/question-icon.png" /></li>
-
-            <li className={activeTaskBtn === 1 ? "active-button" : ""} onClick={() => {
-              setActiveTaskBtn(1);
-              setTaskPage(1);
-            }}>Friend List</li>
-
-            <li className={activeTaskBtn === 2 ? "active-button" : ""} onClick={() => {
-              setActiveTaskBtn(2);
-              setTaskPage(2);
-            }}>Point History</li>
+            {tabs.map(tab => (
+              <li key={tab.key} className={taskPage === tab.key ? "active-button" : ""} onClick={() => {
+                setTaskPage(tab.key);
+              }}>
+                {tab.label}
+                {tab.key === 0 && (<img className="sm-icon inline-icon" src="src/assets/question-icon.png" />)}
+              </li>
+            ))}
           </ul>
 
           <TaskSection page={taskPage}></TaskSection>
