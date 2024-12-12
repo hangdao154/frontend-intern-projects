@@ -1,7 +1,6 @@
 import { create } from "zustand"
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 import { BadgeListItem } from "../../interfaces";
-import { immer } from "zustand/middleware/immer";
 
 export interface State {
     pinnedBadges: Array<BadgeListItem | null>,
@@ -15,7 +14,6 @@ export interface ProfileActions {
 
 
 const intialState = {
-    count: 0,
     pinnedBadges: undefined,
 }
 

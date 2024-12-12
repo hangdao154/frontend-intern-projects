@@ -28,6 +28,7 @@ export default function MyBadges() {
     useEffect(() => {
         getBadges(filter);
     }, [filter])
+    
     const filteredData: BadgeListItem[] = fetchedData.map((item) => ({
         id: item.id,
         createdAt: item.createdAt,

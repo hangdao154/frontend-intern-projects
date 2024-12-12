@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  transition: ease 300ms;
+}
+
+body, div#root {
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(57,87,93,1) 100%);
+}
+
+.avatar {
+  border-radius: 50%;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Points from './components/Points'
@@ -21,17 +21,6 @@ const tabs = [
 ]
 
 function App() {
-
-
-  // Set all badges
-  // useEffect(() => {
-  //     actions.setBadges();
-  // }, [])
-  // const allBadges = getAllBadges();
-  // console.log("All badges store:");
-  // console.log(allBadges);
-
-
   // For track top sliding page
   const [profilePage, setProfilePage] = useState<number>(0);
 
