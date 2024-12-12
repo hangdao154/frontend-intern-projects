@@ -1,0 +1,84 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  background: #00000005;
+  padding: 50px 200px;
+}
+
+.page-selection,
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.page-selection button {
+  flex: 1 1 0;
+  padding: 5px;
+}
+
+.form-section {
+  background-color: white;
+  margin: 150px auto;
+  width: 40%;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 46px 32px;
+  border-radius: 20px;
+  box-shadow: 0px 5px 10px #00000025;
+}
+
+.form-section button {
+  flex: 1 1 0;
+}
+
+.form-section h1 {
+  color: rgb(22, 119, 255);
+}
+
+.tasks-container {
+  padding: 0;
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.task-item input {
+  all: unset;
+  flex-grow: 2;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  border-radius: 7px;
+  padding: 5px 10px;
+  border: 1px solid #00000020;
+  transition: ease-in-out 300ms;
+}
+
+.task-item input:hover {
+  border: 1px solid rgba(22, 119, 255, 0.532);
+  transition: ease-in-out 300ms;
+}
+
+.task-item input:focus {
+  border: 1px solid rgb(22, 119, 255);
+  box-shadow: 0px 0px 3px rgba(22, 119, 255, 0.384);
+  transition: ease-in-out 300ms;
+}
+
+input.error {
+  border: 1px solid rgb(220, 46, 46);
+
+}
+
+input.error:focus {
+  border: 1px solid rgb(220, 46, 46);
+  box-shadow: 0 0 3px rgba(220, 46, 46, 0.34);
+}

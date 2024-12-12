@@ -1,0 +1,349 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    font-family: 'Noto Sans', 'Arial', sans-serif;
+    transition: all ease 300ms;
+}
+
+div#root {
+    display: block;
+    overflow: auto;
+    position: relative;
+}
+
+body {
+    max-height: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(assets/images/bg-themes/body-background-1.png);
+    background-attachment: fixed;
+}
+
+header {
+    z-index: 1;
+    position: fixed;
+    left: 80px;
+    overflow-x: auto;
+}
+
+aside {
+    z-index: 3;
+    padding: 0;
+    height: 100%;
+    position: fixed;
+    max-height: 100vh;
+    overflow-y: auto;
+    background-color: rgb(15, 21, 53);
+    border-right: solid 1px #FFFFFF30;
+}
+
+.overlay {
+    z-index: 2;
+}
+
+
+.profile,
+.message-container,
+aside,
+main {
+    -ms-overflow-style: none;
+    /* Hide scrollbar IE and Edge */
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+}
+
+.table-container {
+    scrollbar-width: 2px;
+}
+
+
+.ant-menu {
+    background-color: rgb(15, 21, 53);
+    font-size: large;
+}
+
+.navbar li {
+    display: flex;
+    align-items: center;
+}
+
+.dark-style {
+    border: solid #FFFFFF20 1px;
+    padding: 8px 16px;
+    color: white;
+    background-color: #0f1535;
+}
+
+input.dark-style:hover,
+textarea.dark-style:hover,
+button:hover,
+button.dark-style:hover,
+select.dark-style:hover {
+    filter: brightness(150%);
+}
+
+input.dark-style:focus,
+textarea.dark-style:focus {
+    background-color: rgb(31, 41, 97);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+label,
+label.sub-label {
+    color: white;
+}
+
+button {
+    color: white;
+}
+
+.blue-btn {
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: #0D6EFD;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btn-group .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.star .material-symbols-outlined {
+    color: rgb(255, 193, 7);
+}
+
+.page-nav .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.left {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+/* TABLE */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #EAEAEA30 transparent;
+    scrollbar-gutter: stable;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    white-space: nowrap;
+}
+
+td {
+    min-width: fit-content;
+    padding: 16px 16px;
+    border-bottom: solid #FFFFFF30 1px;
+}
+
+tbody tr:hover {
+    background-color: #101847;
+}
+
+.name-cell h4,
+.name-cell p {
+    min-width: 250px;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    color: white;
+    flex: 1;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+input,
+textarea {
+    font-weight: 400;
+    font-family: 'Noto Sans', 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+form input,
+form textarea {
+    font-weight: 400;
+    font-family: 'Noto Sans', 'Arial', sans-serif;
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin-top: 16px;
+}
+
+.inventory label {
+    font-size: 16px;
+}
+
+.card-body {
+    background-color: #070C29;
+    border-radius: 8px;
+}
+
+.gradient {
+    background-color: linear-gradient(to right, #7928ca, #ff0080, #04e09a, #e0d504) 1;
+}
+
+.authentication-body {
+    box-sizing: border-box;
+    background-color: #070C29;
+    padding: 48px;
+    margin: auto;
+}
+
+label.ant-radio-wrapper {
+    display: block;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    min-width: 28px;
+    height: 14px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 2px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #0D6EFD;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #0D6EFD;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+}
+
+.disabled {
+    cursor: no-drop;
+    background-color: gray !important;
+}
+
+.sub-label {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.dark-selected {
+    background-color: #0D6EFD;
+}
+
+.errored {
+    background-color: crimson;
+}
+
+select {
+    min-width: 110px;
+    background-image: url("src/assets/images/buttons/select_arrow.svg");
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: right 5px center;
+}
+
+@media (min-width: 360px) {
+
+    .expanded,
+    .expand.hovered {
+        width: 100%;
+        left: 0;
+    }
+
+    .card-body {
+        padding: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .expanded {
+        width: calc(100% - 256px);
+        margin-left: 256px;
+    }
+
+    .expanded.hovered {
+        width: calc(100% - 79px);
+        margin-left: 80px;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+}
