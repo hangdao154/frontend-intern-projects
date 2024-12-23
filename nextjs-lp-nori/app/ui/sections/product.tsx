@@ -4,6 +4,7 @@ import LeftRightComponent from "../common/left-right";
 import Button from "../common/button";
 import CardComponent from "../common/card";
 import { ivyPrestoTextLight } from "../fonts";
+import { AccordionComponent } from "../common/accordion";
 
 const PRODUCTS_CAROUSEL = [
     'https://d9hhrg4mnvzow.cloudfront.net/get.nori.co/nori-lp-1/f5b0496f-big1.jpg',
@@ -18,6 +19,31 @@ const COLORS = [
     'black',
     'pink',
     'blue'
+]
+
+const PRODUCT_DESCRIPTION = [
+    {
+        title: 'Details',
+        content: [
+            'Non-stick aluminum plates built for durability',
+            'Lightweight form-factor (1.4 lbs, 14 in Length)',
+            '8 ft power cord for easy maneuvering',
+            'Built-in tilt sensors to ensure automatic shut off after 10 minutes of no movement',
+            'Six Fabric-Specific Heat Settings',
+            'UL Certified and Patent-Pending',
+            'Water Tank: 29ml',
+            'Voltage/Frequency/Power: 120V/60Hz/450W'
+        ]
+    },
+    {
+        title: 'Care',
+        content: [
+            'Use our signature fabric facial or distilled water when filling the steam port.',
+            'Remove the dirt from the plates with a damp cloth, sponge or Q-tip after iron is unplugged and cool.',
+            'Turn the iron back on and lightly steam over an old cloth. This will help remove any residue left in the steam holes.',
+            'When finished cleaning, turn iron off and allow time to cool before storing.',
+        ]
+    }
 ]
 
 export default function Product() {
@@ -55,20 +81,21 @@ export default function Product() {
                     />
                     <div className="bg-slate-200 p-3 mt-8">
                         <ul className="flex justify-between items-center gap-4">
-                            <li className="flex gap-2">
+                            <li className="flex items-center gap-2">
                                 <Image src="https://d9hhrg4mnvzow.cloudfront.net/get.nori.co/nori-lp-1/f392aa18-group-2545.svg" width={32} height={32} alt="" className="inline" />
                                 <p className="inline ml-2 text-dark-blue text-md leading-tight">No more boards</p>
                             </li>
-                            <li className="flex gap-2">
+                            <li className="flex items-center gap-2">
                                 <Image src="https://d9hhrg4mnvzow.cloudfront.net/get.nori.co/nori-lp-1/a4ea66c1-group-2546.svg" width={32} height={32} alt="" className="inline" />
                                 <p className="inline ml-2 text-dark-blue text-md leading-tight">No more leakage</p>
                             </li>
-                            <li className="flex gap-2">
+                            <li className="flex items-center gap-2">
                                 <Image src="https://d9hhrg4mnvzow.cloudfront.net/get.nori.co/nori-lp-1/25ec5eed-group-2547.svg" width={32} height={32} alt="" className="inline" />
                                 <p className="inline ml-2 text-dark-blue text-md leading-tight">No more Dry-Cleaning</p>
                             </li>
                         </ul>
                     </div>
+                    <AccordionComponent accordions={PRODUCT_DESCRIPTION} />
                 </div>
             </LeftRightComponent>
         </section>

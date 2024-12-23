@@ -8,7 +8,7 @@ export default function TestimonialsSection() {
             <div className="bg-beige px-[15%]">
                 <LeftRightComponent>
                     <div className="py-20 pr-14">
-                        <Image src="https://d9hhrg4mnvzow.cloudfront.net/get.nori.co/nori-lp-1/fd3d6ada-group-2562.jpg" width="530" height="392" alt="" />
+                        <Image src="https://d9hhrg4mnvzow.cloudfront.net/get.nori.co/nori-lp-1/fd3d6ada-group-2562.jpg" width="530" height="392" alt="" className="ml-auto" />
                     </div>
                     <div className="py-20">
                         <CardComponent
